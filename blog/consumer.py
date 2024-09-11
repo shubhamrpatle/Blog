@@ -28,6 +28,6 @@ def execute():
     pool.close() 
     pool.join()   
 
-# Start execution
+
 if __name__ == '__main__':
     execute()

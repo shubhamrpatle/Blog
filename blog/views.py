@@ -12,7 +12,6 @@ class BlogSubmissionView(APIView):
     def post(self, request):
         serializer = BlogSerializer(data=request.data)
         if serializer.is_valid():
-            # Push the blog data to the Redis queue
             blog_data = json.dumps(serializer.validated_data)
             redis_client.rpush('blog_queue', blog_data)
             return Response({'message': 'Blog submitted to queue'}, status=status.HTTP_200_OK)
