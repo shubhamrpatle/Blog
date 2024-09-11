@@ -12,6 +12,15 @@ services:
       - redis
       - elasticsearch
 
+  worker:
+    build: .
+    command: python blog/consumer.py
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - elasticsearch
+
   redis:
     image: redis:alpine
     ports:
@@ -22,4 +31,4 @@ services:
     environment:
       - discovery.type=single-node
     ports:
-      - "9200:9200"
+      - "92supervisord.conf00:9200"

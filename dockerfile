@@ -7,4 +7,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN apt-get update && apt-get install -y supervisor
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

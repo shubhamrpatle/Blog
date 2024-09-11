@@ -39,19 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`http://localhost:8000/blog/search/?q=${encodeURIComponent(query)}`);
             console.log(response);
             const data = await response.json();
-            const results = data;  // Adjust this based on your actual response structure
+            const results = data;  
             console.log(results);
             searchResultsList.innerHTML = '';
             results.forEach(result => {
                 if (result._source) {
                     const title = result._source.title || 'No Title';
                     const text = result._source.text || 'No Content';
+                    const user_id = result._source.user_id || 'No user';
                     
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${title}: ${text}`;
+                    listItem.textContent = `${user_id}:${title}: ${text}`;
                     searchResultsList.appendChild(listItem);
                 } else {
-                    console.warn('No _source in result:', result);
+                    console.warn('No result:', result);
                 }
             });
             

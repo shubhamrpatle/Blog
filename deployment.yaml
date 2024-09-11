@@ -17,6 +17,9 @@ spec:
         image: blogservice:latest
         ports:
         - containerPort: 8000
+      - name: worker
+        image: blogservice:latest
+        command: ["python", "blog/consumer.py"]
       - name: redis
         image: redis:alpine
       - name: elasticsearch
