@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog-app
+  template:
+    metadata:
+      labels:
+        app: blog-app
+    spec:
+      containers:
+      - name: web
+        image: blogservice:latest
+        ports:
+        - containerPort: 8000
+      - name: redis
+        image: redis:alpine
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
