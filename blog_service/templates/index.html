@@ -10,13 +10,12 @@
 <body>
     <h1>Blog Service</h1>
     
-    <!-- Blog Submission Form -->
     <div>
         <h2>Submit a Blog</h2>
         <form id="blog-form">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
-            <label for="text">Text:</label>
+            <label for="text">Content:</label>
             <textarea id="text" name="text" rows="4" required></textarea>
             <label for="user-id">User ID:</label>
             <input type="number" id="user-id" name="user-id" required>
@@ -24,14 +23,12 @@
         </form>
     </div>
 
-    <!-- Search Form -->
     <div>
         <h2>Search Blogs</h2>
         <input type="text" id="search-query" placeholder="Search...">
         <button id="search-button">Search</button>
     </div>
 
-    <!-- Search Results -->
     <div id="search-results">
         <h2>Results:</h2>
         <ul id="results-list"></ul>
